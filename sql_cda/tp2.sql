@@ -9,16 +9,16 @@ USE invitation;
 
 CREATE TABLE IF NOT EXISTS inv_personne (
     id INT PRIMARY KEY,
-    prenom VARCHAR(50),
-    nom VARCHAR(50),
-    age INT,
-    inscription DATE,
-    etat BOOLEAN,
-    statut ENUM('membre', 'non membre'),
-    cv TEXT,
-    salaire DECIMAL(15, 2),
+    prenom VARCHAR(50) NOT NULL,
+    nom VARCHAR(50) NOT NULL,
+    age INT NOT NULL,
+    inscription DATE NOT NULL,
+    etat BOOLEAN NOT NULL,
+    statut ENUM('membre', 'non membre') NOT NULL,
+    cv TEXT NOT NULL,
+    salaire DECIMAL(15, 2) NOT NULL,
     CONSTRAINT pk_personne PRIMARY KEY (id)
-);
+)ENGINE=INNODB;
 
 
 INSERT INTO inv_personne (id, prenom, nom, age, inscription, etat, statut, cv, salaire) VALUES

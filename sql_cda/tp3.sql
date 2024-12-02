@@ -7,9 +7,9 @@ USE zoo;
 
 CREATE TABLE chats (
     id INT AUTO_INCREMENT,
-    nom VARCHAR(50),
-    yeux VARCHAR(50),
-    age INT,
+    nom VARCHAR(50) NOT NULL,
+    yeux VARCHAR(50) NOT NULL,
+    age INT NOT NULL,
     CONSTRAINT pk_chats PRIMARY KEY (id)
 )ENGINE=INNODB;
 

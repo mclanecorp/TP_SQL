@@ -9,16 +9,16 @@ USE invitation;
 
 CREATE TABLE IF NOT EXISTS inv_personne (
     id INT PRIMARY KEY,
-    prenom VARCHAR(50),
-    nom VARCHAR(50),
-    age INT,
-    inscription DATE,
-    etat BOOLEAN,
-    statut ENUM('membre', 'non membre'),
-    cv TEXT,
-    salaire DECIMAL(15, 2),
+    prenom VARCHAR(50) NOT NULL,
+    nom VARCHAR(50) NOT NULL,
+    age INT NOT NULL,
+    inscription DATE NOT NULL,
+    etat BOOLEAN NOT NULL,
+    statut ENUM('membre', 'non membre') NOT NULL,
+    cv TEXT NOT NULL,
+    salaire DECIMAL(15, 2) NOT NULL,
     CONSTRAINT pk_personne PRIMARY KEY (id)
-);
+)ENGINE=INNODB;
 
 
 INSERT INTO inv_personne (id, prenom, nom, age, inscription, etat, statut, cv, salaire) VALUES
@@ -55,11 +55,11 @@ SELECT UPPER(prenom) AS prenom_majuscule, LOWER(nom) AS nom_minuscule FROM inv_p
 -- Afficher les personnes dont le prénom contient 'bra'
 SELECT * FROM inv_personne WHERE prenom LIKE '%bra%';
 
--- 1Trier par âge les membres
+-- Trier par âge les membres
 SELECT * FROM inv_personne WHERE statut = 'membre' ORDER BY age;
 
--- 1Afficher le nombre d'acteurs "membre"
+-- Afficher le nombre d'acteurs "membre"
 SELECT COUNT(*) AS nombre_de_membres FROM inv_personne WHERE statut = 'membre';
 
--- 1Afficher le nombre des membres et des non membres
+-- Afficher le nombre des membres et des non membres
 SELECT statut, COUNT(*) AS nombre FROM inv_personne GROUP BY statut;
