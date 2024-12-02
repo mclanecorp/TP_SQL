@@ -45,3 +45,13 @@ SELECT COUNT(*) AS nombre_de_chats_marron FROM chat WHERE yeux = 'marron';
 
 -- Afficher le nombre de chats par couleur d'yeux
 SELECT yeux, COUNT(*) AS nombre_de_chats FROM chat GROUP BY yeux;
+
+
+--  à partir d'un fichier CSV
+LOAD DATA INFILE 'chemin du csv'
+INTO TABLE chat
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS
+(id, nom, yeux, age);
