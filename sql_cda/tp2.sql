@@ -16,7 +16,8 @@ CREATE TABLE IF NOT EXISTS inv_personne (
     etat BOOLEAN,
     statut ENUM('membre', 'non membre'),
     cv TEXT,
-    salaire DECIMAL(15, 2)
+    salaire DECIMAL(15, 2),
+    CONSTRAINT pk_personne PRIMARY KEY (id)
 );
 
 
