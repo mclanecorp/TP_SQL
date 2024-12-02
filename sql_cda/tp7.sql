@@ -49,7 +49,7 @@ SELECT film.titre
 FROM film
 JOIN film_has_acteur ON film.id = film_has_acteur.film_id
 JOIN acteur ON film_has_acteur.acteur_id = acteur.id
-WHERE acteur.prenom = 'Léonardo' AND acteur.nom = 'DI CAPRIO';
+WHERE acteur.prenom = 'Léonardo' AND acteur.nom = 'Dicaprio';
 
 SELECT acteur.prenom, acteur.nom, COUNT(film_has_acteur.film_id) AS nombre_de_films
 FROM acteur
