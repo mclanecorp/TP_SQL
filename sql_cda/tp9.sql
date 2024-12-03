@@ -154,3 +154,7 @@ JOIN devis ON factures.devis_id = devis.id
 JOIN projets ON devis.projet_id = projets.id
 JOIN clients ON projets.client_id = clients.id
 WHERE paiement IS NULL AND date < CURDATE();
+
+
+
+https://dbdiagram.io/d/tp_9-674ec2ece9daa85aca78ec75
