@@ -98,4 +98,23 @@ FROM commande
 JOIN client ON commande.client_id = client.id
 JOIN commande_article ON commande.id = commande_article.commande_id
 JOIN article ON commande_article.article_id = article.id
-WHERE client.nom = 'Brad' AND client.prenom = 'PITT';
+WHERE client.nom = 'Brad' AND client.prenom = 'PITT'
+
+UNION ALL
+
+SELECT 
+  client.nom AS client_nom,
+  client.prenom AS client_prenom,
+  commande.date AS date_commande,
+  'Total' AS article_nom,
+  NULL AS quantite,
+  NULL AS prix_unitaire,
+  SUM(commande_article.quantite * article.prix) AS total_ht,
+  SUM(commande_article.quantite * article.prix) * 0.20 AS tva,
+  SUM(commande_article.quantite * article.prix) * 1.20 AS total_ttc
+FROM commande
+JOIN client ON commande.client_id = client.id
+JOIN commande_article ON commande.id = commande_article.commande_id
+JOIN article ON commande_article.article_id = article.id
+WHERE client.nom = 'Brad' AND client.prenom = 'PITT'
+GROUP BY client.nom, client.prenom, commande.date;
